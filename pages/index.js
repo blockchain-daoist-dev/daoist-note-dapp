@@ -3,6 +3,8 @@ import * as anchor from '@project-serum/anchor';
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import idl from './myproject.json'
 
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
 const { SystemProgram, Keypair } = anchor.web3;
 
 let myAccount = Keypair.generate();
@@ -142,9 +144,11 @@ function App() {
 
                 {!walletAddress ? (
                     <div>
+
                         <button className='btn' onClick={connectWallet}>
                             Connect Wallet
                         </button>
+                        <WalletMultiButton />
                     </div>
                 ) : (
                     <div>
