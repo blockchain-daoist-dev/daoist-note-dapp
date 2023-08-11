@@ -61,7 +61,7 @@ function App() {
                     await createAccount();
                 }
             } else {
-                alert('transaction failed!')
+                alert('please install phantom wallet!')
             }
         } catch (error) {
             alert('the user has rejected the request!')
