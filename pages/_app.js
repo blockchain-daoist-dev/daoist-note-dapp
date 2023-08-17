@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>Daoist Todo App</title>
+                <title>Daoist Note dApp</title>
             </Head>
             <main>
                 <WalletConnectProvider>
