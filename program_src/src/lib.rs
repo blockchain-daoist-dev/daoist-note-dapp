@@ -9,7 +9,7 @@ pub mod states;
 use crate::{ constant::*, error::*, states::* };
 
 
-declare_id!("B1oXQn9bM35wGjMd7tcvmafhy7DHkfNUtcKZ6U9p4giL");
+declare_id!("2Git8A58xvSLJCUFDp7JX2qDfxYCzcnKZo26AH1bNgkv");
 
 #[program]
 pub mod daoist_note_dApp {
