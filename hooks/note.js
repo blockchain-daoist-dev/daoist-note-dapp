@@ -105,21 +105,21 @@ export function useNote() {
 
                 // Connect to profilePda in blockchain
                 const [profilePda, profileBump] = findProgramAddressSync([utf8.encode('USER_STATE'), publicKey.toBuffer()], program.programId)
-                // Connect to todoPda in blockchain
-                const [todoPda, todoBump] = findProgramAddressSync([utf8.encode('TODO_STATE'), publicKey.toBuffer(), Uint8Array.from([lastNote])], program.programId)
+                // Connect to notePda in blockchain
+                const [notePda, todoBump] = findProgramAddressSync([utf8.encode('NOTE_STATE'), publicKey.toBuffer(), Uint8Array.from([lastNote])], program.programId)
 
                 // Takes input and set as content
                 if (input) {
                     await program.methods
-                    .addTodo(input)
+                    .addNote(input)
                     .accounts({
                         userProfile: profilePda,
-                        todoAccount: todoPda,
+                        noteAccount: notePda,
                         authority: publicKey,
                         systemProgram: SystemProgram.programId
                     })
                     .rpc()
-                    toast.success('Successfully added todo.')
+                    toast.success('Successfully added Note.')
                 }
             } catch(error) {
                 console.log(error)
@@ -131,7 +131,7 @@ export function useNote() {
         }
     }
 
-    const markTodo = async (todoPda, todoIdx) => {
+    const markTodo = async (notePda, todoIdx) => {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
@@ -142,7 +142,7 @@ export function useNote() {
                 .markTodo(todoIdx)
                 .accounts({
                     userProfile: profilePda,
-                    todoAccount: todoPda,
+                    noteAccount: notePda,
                     authority: publicKey,
                     systemProgram: SystemProgram.programId,
                 })
@@ -158,7 +158,7 @@ export function useNote() {
         }
     }
 
-    const removeTodo = async (todoPda, todoIdx) => {
+    const removeTodo = async (notePda, todoIdx) => {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
@@ -170,7 +170,7 @@ export function useNote() {
                 .removeTodo(todoIdx)
                 .accounts({
                     userProfile: profilePda,
-                    todoAccount: todoPda,
+                    noteAccount: notePda,
                     authority: publicKey,
                     systemProgram: SystemProgram.programId,
                 })

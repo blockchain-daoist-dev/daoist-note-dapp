@@ -22,7 +22,7 @@ const Home = () => {
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
                             <form onSubmit={addTodo}>
-                                <input value = {input} onChange={handleChange} id={styles.inputField} type="text" placeholder='Create a new todo...' />
+                                <input value = {input} onChange={handleChange} id={styles.inputField} type="text" placeholder='Add a new note...' />
                             </form>
                         </div>
                         <div className={styles.iconContainer}>
@@ -40,9 +40,9 @@ const Home = () => {
 
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
-                    <NoteSection title="Tasks" todos={incompleteTodos} action={markTodo} />
+                    <NoteSection title="Notes" todos={incompleteTodos} action={markTodo} />
 
-                    <NoteSection title="Completed" todos={completedTodos} action={removeTodo} />
+                    {/* <NoteSection title="Completed" todos={completedTodos} action={removeTodo} /> */}
                 </Loading>
             </div>
         </div>
