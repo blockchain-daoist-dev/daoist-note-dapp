@@ -20,15 +20,24 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
     }
 
     const [updateContent, setUpdateContent] = React.useState([])
-    const isEditing = true;
+    const [isEditing, setIsEditing] = React.useState(false);
     const handleChange = (e)=> {
         setUpdateContent(e.target.value)
     }
+
+    const toggleEdit = () => {
+        setIsEditing(!isEditing);
+    };
+
+    const updateNote = () => {
+        setIsEditing(!isEditing);
+    }
+
     return (
         <>
             {isEditing ? (
                 <li key={idx} className={styles.todoItem}>
-                    <div className={styles.todoCheckbox} />
+                    <div />
                     <div>
                         <input 
                             id = {styles.noteInputField}
@@ -40,13 +49,13 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
                         </input>
                     </div>
                     <div className={styles.iconContainer}>
-                        <CheckCircleIcon className={styles.pencilAltIcon} />
+                        <CheckCircleIcon onClick={updateNote} className={styles.checkCircleIcon} />
                     </div>
                 </li>
             ) : (
                 <li key={idx} className={styles.todoItem}>
-                    <div onClick={handleMarkTodo} className={`${styles.todoCheckbox} ${marked && styles.checked}`} />
-                    <div>
+                    <div />
+                    <div className={styles.noteItem}>
                         <span className="todoText">{content}</span>
                         {dateline && (
                             <div className={styles.todoDateline}>
@@ -56,7 +65,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
                         )}
                     </div>
                     <div className={styles.iconContainer}>
-                        <PencilAltIcon className={styles.pencilAltIcon} />
+                        <PencilAltIcon onClick={toggleEdit} className={styles.pencilAltIcon} />
                         <TrashIcon onClick={handleRemoveTodo} className={`${styles.trashIcon} ${!marked && styles.checked}`} />
                     </div>
                 </li>
