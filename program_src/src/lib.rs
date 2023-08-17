@@ -12,11 +12,11 @@ use crate::{ constant::*, error::*, states::* };
 declare_id!("2Git8A58xvSLJCUFDp7JX2qDfxYCzcnKZo26AH1bNgkv");
 
 #[program]
-pub mod daoist_note_dApp {
+pub mod daoist_note_dapp {
     use super::*;
 
     pub fn initialize_user(
-        ctx: Context<Initialize> 
+        ctx: Context<InitializeUser> 
     ) -> Result<()> {
         let user_profile = &mut ctx.accounts.user_profile;
         
@@ -47,11 +47,24 @@ pub mod daoist_note_dApp {
         .checked_add(1)
         .unwrap();
 
-        user.profile.note_count = user_profile.note_count
+        user_profile.note_count = user_profile.note_count
         .checked_add(1)
-        .unwrap()
+        .unwrap();
 
         Ok(())
+    }
+
+    pub fn update_note(
+        ctx: Context<UpdateNote>,
+        note_idx: u8,
+        _content: String,
+    ) -> Result<()>{
+        let note_account = &mut ctx.accounts.note_account;
+
+        note_account.content = _content;
+
+        Ok(())
+        
     }
 }
 
@@ -75,7 +88,7 @@ pub struct InitializeUser<'info> {
     pub system_program: Program<'info, System>,
 }
 
-#[dervive(Accounts)]
+#[derive(Accounts)]
 #[instruction()]
 pub struct AddNote<'info> {
     #[account(
@@ -88,7 +101,7 @@ pub struct AddNote<'info> {
 
     #[account(
         init,
-        seeds = [NOTE_STATE, authority.key().as_ref(), &[user_profile.last_note as u8].as_ref()],
+        seeds = [NOTE_TAG, authority.key().as_ref(), &[user_profile.last_note as u8].as_ref()],
         bump,
         payer = authority,
         space = std::mem::size_of::<NoteAccount>() + 8,
@@ -97,9 +110,34 @@ pub struct AddNote<'info> {
 
     #[account(mut)]
     pub authority: Signer<'info>,
+    
     pub system_program: Program<'info, System>,
 }
 
+#[derive(Accounts)]
+#[instruction(note_idx: u8, _content: String)]
+pub struct UpdateNote<'info> {
+    #[account(
+        mut,
+        seeds = [USER_TAG, authority.key().as_ref()],
+        bump,
+        has_one = authority,
+    )]
+    pub user_profile: Box<Account<'info, UserProfile>>,
+
+    #[account(
+        mut,
+        seeds = [NOTE_TAG, authority.key().as_ref(), &[note_idx].as_ref()],
+        bump,
+        has_one = authority,
+    )]
+    pub note_account: Box<Account<'info, NoteAccount>>,
+
+    #[account(mut)]
+    pub authority: Signer<'info>,
+    
+    pub system_program: Program<'info, System>,
+}
 
 
 // #[derive(Accounts)]
