@@ -158,7 +158,7 @@ export function useNote() {
         }
     }
 
-    const removeTodo = async (notePda, noteIdx) => {
+    const removeNote = async (notePda, noteIdx) => {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
@@ -167,7 +167,7 @@ export function useNote() {
                 const [profilePda, profileBump] = findProgramAddressSync([utf8.encode(['USER_STATE']), publicKey.toBuffer()], program.programId)
     
                 await program.methods
-                .removeTodo(todoIdx)
+                .removeNote(noteIdx)
                 .accounts({
                     userProfile: profilePda,
                     noteAccount: notePda,
@@ -175,7 +175,7 @@ export function useNote() {
                     systemProgram: SystemProgram.programId,
                 })
                 .rpc()
-                toast.success('Successfully removed Todo!')
+                toast.success('Successfully removed!')
             } catch(error) {
                 console.log(error)
                 toast.error(error.toString())
@@ -191,5 +191,5 @@ export function useNote() {
     const incompleteTodos = useMemo(() => todos.filter((todo) => !todo.account.marked), [todos])
     const completedTodos = useMemo(() => todos.filter((todo) => todo.account.marked), [todos])
 
-    return { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addNote, updateNote, removeTodo }
+    return { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addNote, updateNote, removeNote }
 }

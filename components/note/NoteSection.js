@@ -1,14 +1,14 @@
 import styles from '../../styles/Todo.module.css'
 import NoteList from './NoteList'
 
-const NoteSection = ({ title, todos, action }) => {
+const NoteSection = ({ title, todos, actionUpdate, actionRemove }) => {
     return (
         <div className={styles.todoSection}>
             <h1 className="title">
                 {title} - {todos.length}
             </h1>
 
-            <NoteList todos={todos} action={action} />
+            <NoteList todos={todos} actionUpdate={actionUpdate} actionRemove={actionRemove} />
         </div>
     )
 }

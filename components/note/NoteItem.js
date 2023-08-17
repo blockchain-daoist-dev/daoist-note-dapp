@@ -2,18 +2,11 @@ import styles from '../../styles/Todo.module.css'
 import { CalendarIcon, TrashIcon, PencilAltIcon, CheckCircleIcon } from '@heroicons/react/outline'
 
 import React from 'react'
-const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
-    const handleMarkTodo = () => {
-        // Only allow unchecked todo to be marked
-        if (marked) return
-
-        action(publicKey, idx)
-
-    }
+const NoteItem = ({ idx, content, marked, dateline, publicKey, actionUpdate, actionRemove }) => {
 
     const handleRemoveTodo = () => {
         // Only allow checked todo to be removed
-       return action(publicKey, idx)
+       return actionRemove(publicKey, idx)
 
     }
 
@@ -30,7 +23,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
     const updateNote = () => {
         setIsEditing(!isEditing);
 
-        return action(publicKey, idx, updateContent)
+        return actionUpdate(publicKey, idx, updateContent)
     }
 
     return (

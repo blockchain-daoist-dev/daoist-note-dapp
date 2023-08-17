@@ -11,7 +11,7 @@ import styles from '../styles/Home.module.css'
 
 
 const Home = () => {
-    const { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, content,  handleChange, initializeUser, addNote, updateNote } = useNote()
+    const { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, content,  handleChange, initializeUser, addNote, updateNote, removeNote } = useNote()
 
 
     return (
@@ -40,7 +40,7 @@ const Home = () => {
 
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
-                    <NoteSection title="Notes" todos={incompleteTodos} action={updateNote} />
+                    <NoteSection title="Notes" todos={incompleteTodos} actionUpdate={updateNote} actionRemove={removeNote}/>
 
                     {/* <NoteSection title="Completed" todos={completedTodos} action={removeTodo} /> */}
                 </Loading>
