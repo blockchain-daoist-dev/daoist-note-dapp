@@ -11,7 +11,7 @@ import styles from '../styles/Home.module.css'
 
 
 const Home = () => {
-    const { initialized, loading, transactionPending, completedTodos, incompleteTodos, input,  handleChange, initializeUser, addTodo, markTodo, removeTodo } = useNote()
+    const { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, content,  handleChange, initializeUser, addNote, updateNote } = useNote()
 
 
     return (
@@ -21,7 +21,7 @@ const Home = () => {
                     <div className={styles.todoInput}>
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
-                            <form onSubmit={addTodo}>
+                            <form onSubmit={addNote}>
                                 <input value = {input} onChange={handleChange} id={styles.inputField} type="text" placeholder='Add a new note...' />
                             </form>
                         </div>
@@ -40,7 +40,7 @@ const Home = () => {
 
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
-                    <NoteSection title="Notes" todos={incompleteTodos} action={markTodo} />
+                    <NoteSection title="Notes" todos={incompleteTodos} action={updateNote} />
 
                     {/* <NoteSection title="Completed" todos={completedTodos} action={removeTodo} /> */}
                 </Loading>

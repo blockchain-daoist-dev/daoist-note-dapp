@@ -20,6 +20,7 @@ export function useNote() {
     const [loading, setLoading] = useState(false)
     const [transactionPending, setTransactionPending] = useState(false)
     const [input, setInput] = useState("")
+    const [content, setContent] = useState("")
 
 
     const program = useMemo(() => {
@@ -97,7 +98,7 @@ export function useNote() {
         }
     }
 
-    const addTodo = async (e) => {
+    const addNote = async (e) => {
         e.preventDefault()
         if (program && publicKey) {
             try {
@@ -131,7 +132,7 @@ export function useNote() {
         }
     }
 
-    const markTodo = async (notePda, todoIdx) => {
+    const updateNote = async (notePda, noteIdx, content) => {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
@@ -139,7 +140,7 @@ export function useNote() {
                 const [profilePda, profileBump] = findProgramAddressSync([utf8.encode(['USER_STATE']), publicKey.toBuffer()], program.programId)
 
                 await program.methods
-                .markTodo(todoIdx)
+                .updateNote(noteIdx, content)
                 .accounts({
                     userProfile: profilePda,
                     noteAccount: notePda,
@@ -191,5 +192,5 @@ export function useNote() {
     const incompleteTodos = useMemo(() => todos.filter((todo) => !todo.account.marked), [todos])
     const completedTodos = useMemo(() => todos.filter((todo) => todo.account.marked), [todos])
 
-    return { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addTodo, markTodo, removeTodo }
+    return { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addNote, updateNote, removeTodo }
 }
