@@ -31,6 +31,8 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
 
     const updateNote = () => {
         setIsEditing(!isEditing);
+
+        return action(publicKey, idx, updateContent)
     }
 
     return (

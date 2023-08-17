@@ -20,7 +20,6 @@ export function useNote() {
     const [loading, setLoading] = useState(false)
     const [transactionPending, setTransactionPending] = useState(false)
     const [input, setInput] = useState("")
-    const [content, setContent] = useState("")
 
 
     const program = useMemo(() => {
@@ -148,7 +147,7 @@ export function useNote() {
                     systemProgram: SystemProgram.programId,
                 })
                 .rpc()
-                toast.success('Successfully marked Todo!')
+                toast.success('Successfully updated!')
             } catch(error) {
                 console.log(error)
                 toast.error(error.toString())
