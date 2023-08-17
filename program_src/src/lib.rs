@@ -58,13 +58,27 @@ pub mod daoist_note_dapp {
         ctx: Context<UpdateNote>,
         note_idx: u8,
         _content: String,
-    ) -> Result<()>{
+    ) -> Result<()> {
         let note_account = &mut ctx.accounts.note_account;
 
         note_account.content = _content;
 
         Ok(())
         
+    }
+
+    pub fn remove_note(
+        ctx: Context<RemoveNote>,
+        note_idx: u8,
+    ) -> Result<()> {
+        let user_profile = &mut ctx.accounts.user_profile;
+
+        user_profile.note_count = user_profile.note_count
+        .checked_sub(1)
+        .unwrap();
+
+
+        Ok(())
     }
 }
 
@@ -139,23 +153,28 @@ pub struct UpdateNote<'info> {
     pub system_program: Program<'info, System>,
 }
 
+#[derive(Accounts)]
+#[instruction(note_idx: u8)]
+pub struct RemoveNote<'info> {
+    #[account(
+        mut,
+        seeds = [USER_TAG, authority.key().as_ref()],
+        bump,
+        has_one = authority,
+    )]
+    pub user_profile: Box<Account<'info, UserProfile>>,
 
-// #[derive(Accounts)]
-// pub struct Initialize<'info> {
-//     #[account(init, payer = user, space = 9000)]
-//     pub initial_account: Account<'info, Init>,
-//     #[account(mut)]
-//     pub user: Signer<'info>,
-//     pub system_program: Program<'info, System>,
-// }
+    #[account(
+        mut,
+        close = authority,
+        seeds = [NOTE_TAG, authority.key().as_ref(), &[note_idx].as_ref()],
+        bump,
+        has_one = authority,  
+    )]
+    pub note_account: Box<Account<'info, NoteAccount>>,
 
-// #[derive(Accounts)]
-// pub struct UpdateValue<'info> {
-//     #[account(mut)]
-//     pub storage_account: Account<'info, Init>,
-// }
-
-// #[account]
-// pub struct Init {
-//     pub value: String,
-// }
+    #[account(mut)]
+    pub authority: Signer<'info>,
+    
+    pub system_program: Program<'info, System>,
+}
