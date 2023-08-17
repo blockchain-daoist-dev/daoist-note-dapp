@@ -1,18 +1,18 @@
 import styles from '../../styles/Todo.module.css'
-import { CalendarIcon, TrashIcon } from '@heroicons/react/outline'
+import { CalendarIcon, TrashIcon, PencilAltIcon } from '@heroicons/react/outline'
 
 const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
     const handleMarkTodo = () => {
         // Only allow unchecked todo to be marked
         if (marked) return
-       
+
         action(publicKey, idx)
-        
+
     }
 
     const handleRemoveTodo = () => {
         // Only allow checked todo to be removed
-        if(!marked) return
+        if (!marked) return
 
         action(publicKey, idx)
 
@@ -31,6 +31,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
                 )}
             </div>
             <div className={styles.iconContainer}>
+                <PencilAltIcon className={styles.pencilAltIcon} />
                 <TrashIcon onClick={handleRemoveTodo} className={`${styles.trashIcon} ${!marked && styles.checked}`} />
             </div>
         </li>
