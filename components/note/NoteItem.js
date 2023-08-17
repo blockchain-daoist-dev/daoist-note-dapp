@@ -13,9 +13,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
 
     const handleRemoveTodo = () => {
         // Only allow checked todo to be removed
-        if (!marked) return
-
-        action(publicKey, idx)
+       return action(publicKey, idx)
 
     }
 
@@ -69,7 +67,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
                     </div>
                     <div className={styles.iconContainer}>
                         <PencilAltIcon onClick={toggleEdit} className={styles.pencilAltIcon} />
-                        <TrashIcon onClick={handleRemoveTodo} className={`${styles.trashIcon} ${!marked && styles.checked}`} />
+                        <TrashIcon onClick={handleRemoveTodo} className={styles.trashIcon} />
                     </div>
                 </li>
             )}

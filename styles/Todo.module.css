@@ -104,9 +104,6 @@
     cursor: pointer;
 }
 
-.trashIcon.checked {
-    cursor: not-allowed;
-}
 
 .todoItem .iconContainer {
     display: flex;

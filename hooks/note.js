@@ -158,7 +158,7 @@ export function useNote() {
         }
     }
 
-    const removeTodo = async (notePda, todoIdx) => {
+    const removeTodo = async (notePda, noteIdx) => {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
