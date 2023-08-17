@@ -45,6 +45,7 @@ const NoteItem = ({ idx, content, marked, dateline, publicKey, action }) => {
                             onChange={handleChange}
                             value= {updateContent}
                             placeholder= {content}
+                            autoFocus 
                         >
                         </input>
                     </div>
