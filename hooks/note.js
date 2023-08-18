@@ -192,5 +192,5 @@ export function useNote() {
     const incompleteTodos = useMemo(() => todos.filter((todo) => !todo.account.marked), [todos])
     const completedTodos = useMemo(() => todos.filter((todo) => todo.account.marked), [todos])
 
-    return { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addNote, updateNote, removeNote }
+    return { initialized, anchorWallet, loading, transactionPending, completedTodos, incompleteTodos, input, setInput, handleChange, initializeUser, addNote, updateNote, removeNote }
 }

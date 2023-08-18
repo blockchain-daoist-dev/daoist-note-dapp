@@ -11,12 +11,12 @@ import styles from '../styles/Home.module.css'
 
 
 const Home = () => {
-    const { initialized, loading, transactionPending, completedTodos, incompleteTodos, input, content,  handleChange, initializeUser, addNote, updateNote, removeNote } = useNote()
+    const { initialized, anchorWallet, loading, transactionPending, completedTodos, incompleteTodos, input, content,  handleChange, initializeUser, addNote, updateNote, removeNote } = useNote()
 
 
     return (
         <div className={styles.container}>
-            {initialized ? (
+            {initialized && anchorWallet ? (
                 <div className={styles.actionsContainer}>
                     <div className={styles.todoInput}>
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
@@ -36,7 +36,7 @@ const Home = () => {
                     </div>
                 )} 
            
-            {initialized ? (
+            {initialized && anchorWallet ? (
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
                     <NoteSection title="Notes" todos={incompleteTodos} actionUpdate={updateNote} actionRemove={removeNote}/>
@@ -46,15 +46,16 @@ const Home = () => {
             </div>
             ):(
                 <div className={styles.subContainer}>
-                    <h2 className={styles.header}>Daoist Note dApp</h2>   
-
-                    
+                    <h2 className={styles.header}>Daoist Note dApp</h2>     
 
                     <div className={styles.landingActionsContainer}>
+
                         <WalletMultiButton />
+                        { anchorWallet ? (
                         <button type="button" className={styles.button} onClick={() => initializeUser()} disabled={transactionPending}>
                             Initialize
-                        </button>
+                        </button>):(<></>)}
+                 
                     </div>
                 </div>
             )}
