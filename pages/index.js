@@ -8,6 +8,7 @@ import { useNote } from '../hooks/note';
 import Loading from '../components/Loading';
 import NoteSection from '../components/note/NoteSection';
 import styles from '../styles/Home.module.css'
+import { PlusSmIcon } from '@heroicons/react/solid'
 
 
 const Home = () => {
@@ -26,7 +27,10 @@ const Home = () => {
                             </form>
                         </div>
                         <div className={styles.iconContainer}>
-        
+                            <PlusSmIcon 
+                                className={styles.plusIcon}
+                                onClick={addNote}
+                            />
                         </div>
                     </div>
                     <WalletMultiButton />
@@ -39,7 +43,12 @@ const Home = () => {
             {initialized && anchorWallet ? (
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
-                    <NoteSection title="Notes" todos={incompleteTodos} actionUpdate={updateNote} actionRemove={removeNote}/>
+                    <NoteSection 
+                        title="Notes" 
+                        todos={incompleteTodos} 
+                        actionUpdate={updateNote} 
+                        actionRemove={removeNote}
+                    />
 
                     {/* <NoteSection title="Completed" todos={completedTodos} action={removeTodo} /> */}
                 </Loading>

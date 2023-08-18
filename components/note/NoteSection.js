@@ -4,7 +4,7 @@ import NoteList from './NoteList'
 const NoteSection = ({ title, todos, actionUpdate, actionRemove }) => {
     return (
         <div className={styles.todoSection}>
-            <h1 className="title">
+            <h1 className={styles.title}>
                 {title} - {todos.length}
             </h1>
 
