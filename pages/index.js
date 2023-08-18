@@ -16,8 +16,8 @@ const Home = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.actionsContainer}>
-                {initialized ? (
+            {initialized ? (
+                <div className={styles.actionsContainer}>
                     <div className={styles.todoInput}>
                         <div className={`${styles.todoCheckbox} ${styles.checked}`} />
                         <div className={styles.inputContainer}>
@@ -26,18 +26,17 @@ const Home = () => {
                             </form>
                         </div>
                         <div className={styles.iconContainer}>
-       
+        
                         </div>
                     </div>
+                    <WalletMultiButton />
+                </div>  
                 ) : (
-                    <button type="button" className={styles.button} onClick={() => initializeUser()} disabled={transactionPending}>
-                        Initialize
-                    </button>
-                )}
-                {/* <WalletMultiButton /> */}
-                <WalletMultiButton />
-            </div>
-
+                    <div className={styles.actionsContainer}>
+                    </div>
+                )} 
+           
+            {initialized ? (
             <div className={styles.mainContainer}>
                 <Loading loading={loading}>
                     <NoteSection title="Notes" todos={incompleteTodos} actionUpdate={updateNote} actionRemove={removeNote}/>
@@ -45,6 +44,21 @@ const Home = () => {
                     {/* <NoteSection title="Completed" todos={completedTodos} action={removeTodo} /> */}
                 </Loading>
             </div>
+            ):(
+                <div className={styles.subContainer}>
+                    <h2 className={styles.header}>Daoist Note dApp</h2>   
+
+                    
+
+                    <div className={styles.landingActionsContainer}>
+                        <WalletMultiButton />
+                        <button type="button" className={styles.button} onClick={() => initializeUser()} disabled={transactionPending}>
+                            Initialize
+                        </button>
+                    </div>
+                </div>
+            )}
+
         </div>
     )
 }
