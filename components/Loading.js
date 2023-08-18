@@ -3,7 +3,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 const Loading = ({ loading, children }) => {
   if (loading) return <div 
   style={{ 
-    height: '70vh',
+    height: '60vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
