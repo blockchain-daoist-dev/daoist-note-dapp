@@ -20,7 +20,8 @@
         "next": "12.2.0",
         "react": "^17.0.0 || ^18.0.0",
         "react-dom": "18.2.0",
-        "react-hot-toast": "^2.3.0"
+        "react-hot-toast": "^2.3.0",
+        "react-spinners": "^0.13.8"
     },
     "devDependencies": {
         "eslint": "8.19.0",

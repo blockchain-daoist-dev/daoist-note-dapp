@@ -102,7 +102,7 @@ export function useNote() {
         if (program && publicKey) {
             try {
                 setTransactionPending(true)
-
+                setLoading(true)
                 // Connect to profilePda in blockchain
                 const [profilePda, profileBump] = findProgramAddressSync([utf8.encode('USER_STATE'), publicKey.toBuffer()], program.programId)
                 // Connect to notePda in blockchain
@@ -125,6 +125,7 @@ export function useNote() {
                 console.log(error)
                 toast.error(error.toString())
             } finally {
+                setLoading(false)
                 setTransactionPending(false)
                 setInput("")
             }

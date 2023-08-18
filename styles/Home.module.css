@@ -59,6 +59,13 @@
     gap: 1rem;
 }
 
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
 @media (min-width: 640px) {
     .container {
         max-width: 640px;
