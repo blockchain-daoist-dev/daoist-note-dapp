@@ -144,11 +144,9 @@ function App() {
 
                 {!walletAddress ? (
                     <div>
-
                         <button className='btn' onClick={connectWallet}>
                             Connect Wallet
                         </button>
-                        <WalletMultiButton />
                     </div>
                 ) : (
                     <div>
