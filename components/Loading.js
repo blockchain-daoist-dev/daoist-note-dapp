@@ -8,15 +8,16 @@ const Loading = ({ loading, children }) => {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '1rem',
-    fontSize: '1.75rem',
+    gap: '0.5rem',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
      }}
   ><p>Loading...</p>
   <BeatLoader 
   color={"purple"}
   loading={true}
-  size={35}
-  margin={4}
+  size={40}
+  margin={5}
   aria-label="Loading Spinner"
   data-testid="loader"
   /></div>
