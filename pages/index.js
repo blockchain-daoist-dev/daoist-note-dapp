@@ -51,10 +51,16 @@ const Home = () => {
                     <div className={styles.landingActionsContainer}>
 
                         <WalletMultiButton />
-                        { anchorWallet ? (
-                        <button type="button" className={styles.button} onClick={() => initializeUser()} disabled={transactionPending}>
-                            Initialize
-                        </button>):(<></>)}
+                        { !initialized && anchorWallet ? (
+                        <button
+                        type="button"
+                        className={styles.button}
+                        onClick={() => initializeUser()}
+                        disabled={transactionPending}
+                        >
+                        {transactionPending ? 'Loading...' : 'Initialize'}
+                        </button>
+                        ):(<></>)}
                  
                     </div>
                 </div>

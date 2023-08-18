@@ -1,7 +1,7 @@
 /* Home Page */
 .button {
     background-color: var(--accent-color);
-    color: var(--primary-color);
+    color: var(--secondary-color);
     border-radius: var(--br-md);
     font-size: var(--fs-base);
     font-weight: var(--fw-bold);
