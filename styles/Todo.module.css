@@ -29,6 +29,7 @@
 .todoItem:hover {
     border-color: #512da8; /* Change the border color on hover */
     box-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8; /* Apply glowing box shadow */
+    transition: text-shadow 0.2s ease-in;
     animation: glowing 5s infinite;
   }
   
