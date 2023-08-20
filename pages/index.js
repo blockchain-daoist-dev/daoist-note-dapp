@@ -75,7 +75,20 @@ const Home = () => {
                 </div>
             )}
             <div className={styles.footer}>
-                <p>Footer</p>
+                <div className={styles.imageContainer}>
+                    <img 
+                        src="/theBlokc.png" 
+                        alt="theBlock.icon" 
+                        width={200} // Set the width of the image
+                        height={100} // Set the height of the image
+                    />
+                    <img 
+                        src="/solana-foundation.png" 
+                        alt="solana-foundation.icon" 
+                        width={360} // Set the width of the image
+                        height={80} // Set the height of the image
+                    />
+                </div>
             </div>
         </div>
     )
