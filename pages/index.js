@@ -79,14 +79,16 @@ const Home = () => {
                     <img 
                         src="/theBlokc.png" 
                         alt="theBlock.icon" 
-                        width={200} // Set the width of the image
-                        height={100} // Set the height of the image
+                        width={200} 
+                        height={100} 
+                        style={{ filter: 'drop-shadow(0 0 0.075em #fbfdfdda)' }} 
                     />
                     <img 
                         src="/solana-foundation.png" 
                         alt="solana-foundation.icon" 
-                        width={360} // Set the width of the image
-                        height={95} // Set the height of the image
+                        width={360} 
+                        height={95} 
+                        style={{ filter: 'drop-shadow(0 0 0.15em #fbfdfdda)' }} 
                     />
                 </div>
             </div>
