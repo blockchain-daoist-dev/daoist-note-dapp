@@ -78,6 +78,20 @@
     font-weight: var(--fw-bold);
 }
 
+.header:hover {
+    text-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8;
+    animation: glowing 6s infinite;
+  }
+  
+  @keyframes glowing {
+    0%, 100% {
+      text-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8;
+    }
+    50% {
+      text-shadow: none;
+    }
+  }
+
 .mainContainer {
     display: flex;
     flex-direction: column;
