@@ -49,14 +49,43 @@
     gap: 1rem;
     /* gap: 20px */
 }
-.todoInput {
+/* .todoInput {
     background-color: var(--secondary-color);
     width: 70%;
     height: 50px;
     border-radius: var(--br-2xl);
     display: flex;
     align-items: center;
- }
+ } */
+ .todoInput {
+    background-color: var(--secondary-color);
+    width: 70%;
+    height: 50px;
+    border-radius: var(--br-2xl);
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .todoInput:hover,
+  .todoInput:focus {
+    border-color: #512da8;
+    box-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8;
+    outline: none;
+    animation: glowing 6s infinite;
+  }
+  
+  @keyframes glowing {
+    0%, 100% {
+      box-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8;
+    }
+    50% {
+      box-shadow: none;
+    }
+  }
+  
+
 
  .inputContainer {
     width: 90%;
