@@ -143,6 +143,15 @@
     width: 100%; /* Make sure the footer spans the entire width */
   }
   
+.footer .imageContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    margin: auto;
+    width: 70%;
+}
 
 
 .loadingContainer {
