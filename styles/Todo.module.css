@@ -26,6 +26,21 @@
     padding: 1rem;
 }
 
+.todoItem:hover {
+    border-color: #512da8; /* Change the border color on hover */
+    box-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8; /* Apply glowing box shadow */
+    animation: glowing 5s infinite;
+  }
+  
+  @keyframes glowing {
+    0%, 100% {
+      box-shadow: 0 0 10px #512da8, 0 0 20px #512da8, 0 0 30px #512da8;
+    }
+    50% {
+      box-shadow: none;
+    }
+  }
+
 .noteItem {
     font-size: 18px;
     color: white;
