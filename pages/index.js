@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 import NoteSection from '../components/note/NoteSection';
 import styles from '../styles/Home.module.css'
 import { PlusSmIcon } from '@heroicons/react/solid'
+import Link from 'next/link';
 
 
 const Home = () => {
@@ -80,20 +81,28 @@ const Home = () => {
             ):(
                 <div className={styles.footer}>
                 <div className={styles.imageContainer}>
-                    <img 
-                        src="/theBlokc.png" 
-                        alt="theBlock.icon" 
-                        width={200} 
-                        height={100} 
-                        style={{ filter: 'drop-shadow(0 0 0.075em #fbfdfdda)' }} 
-                    />
-                    <img 
-                        src="/solana-foundation.png" 
-                        alt="solana-foundation.icon" 
-                        width={360} 
-                        height={95} 
-                        style={{ filter: 'drop-shadow(0 0 0.15em #fbfdfdda)' }} 
-                    />
+                    <Link href="https://theblokc.com">
+                        <a target="_blank" rel="noopener noreferrer" style={{ cursor: 'pointer' }}>
+                        <img 
+                            src="/theBlokc.png" 
+                            alt="theBlock.icon" 
+                            width={200} 
+                            height={100} 
+                            style={{ filter: 'drop-shadow(0 0 0.075em #fbfdfdda)' }} 
+                         />
+                        </a>
+                    </Link>
+                    <Link href="https://solana.org/">
+                        <a target="_blank" rel="noopener noreferrer" style={{ cursor: 'pointer' }}>
+                        <img 
+                            src="/solana-foundation.png" 
+                            alt="solana-foundation.icon" 
+                            width={360} 
+                            height={95} 
+                            style={{ filter: 'drop-shadow(0 0 0.15em #fbfdfdda)' }} 
+                         />
+                        </a>
+                    </Link>
                 </div>
             </div>
             )}
