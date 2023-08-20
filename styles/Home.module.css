@@ -105,7 +105,7 @@
 .header {
     font-size: var(--fs-5xl);
     font-weight: var(--fw-bold);
-    filter: drop-shadow(0 0 0.05em #fbfdfdda);
+    filter: drop-shadow(0 0 0.04em #fbfdfdda);
 }
 
 .header:hover {
@@ -149,10 +149,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 3rem;
+    gap: 1rem;
     padding-bottom: 1rem;
     margin: auto;
-    width: 70%;
+    width: 50%;
 }
 
 

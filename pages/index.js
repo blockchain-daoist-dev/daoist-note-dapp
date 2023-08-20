@@ -74,7 +74,11 @@ const Home = () => {
                     </div>
                 </div>
             )}
-            <div className={styles.footer}>
+
+            {initialized && anchorWallet ? (
+                <></>
+            ):(
+                <div className={styles.footer}>
                 <div className={styles.imageContainer}>
                     <img 
                         src="/theBlokc.png" 
@@ -92,6 +96,7 @@ const Home = () => {
                     />
                 </div>
             </div>
+            )}
         </div>
     )
 }
