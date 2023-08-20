@@ -1,6 +1,6 @@
 /* Home Page */
 .button {
-    background-color: var(--accent-color);
+    background-color: #fc76a1;
     color: var(--secondary-color);
     border-radius: var(--br-md);
     font-size: var(--fs-base);
@@ -10,7 +10,7 @@
 }
 
 .button:hover {
-    background-color: var(--accent-color);
+    background-color: #fc76a1;
     opacity: 0.7;
 }
 
