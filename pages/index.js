@@ -74,7 +74,9 @@ const Home = () => {
                     </div>
                 </div>
             )}
-
+            <div className={styles.footer}>
+                <p>Footer</p>
+            </div>
         </div>
     )
 }
