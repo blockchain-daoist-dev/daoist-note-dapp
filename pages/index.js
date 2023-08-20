@@ -86,7 +86,7 @@ const Home = () => {
                         src="/solana-foundation.png" 
                         alt="solana-foundation.icon" 
                         width={360} // Set the width of the image
-                        height={80} // Set the height of the image
+                        height={95} // Set the height of the image
                     />
                 </div>
             </div>

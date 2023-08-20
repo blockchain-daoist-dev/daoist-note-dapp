@@ -148,7 +148,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 2rem;
+    gap: 3rem;
+    padding-bottom: 1rem;
     margin: auto;
     width: 70%;
 }
